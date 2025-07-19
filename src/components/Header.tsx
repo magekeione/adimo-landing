@@ -81,10 +81,7 @@ export default function Header() {
           </div>
 
           {/* Mobile menu button */}
-          <button
-            className="md:hidden flex items-center space-x-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
+          <div className="md:hidden flex items-center space-x-2">
             {/* Theme toggle pentru mobile */}
             <button
               onClick={(e) => {
@@ -95,6 +92,9 @@ export default function Header() {
                 theme === "blue"
                   ? "bg-blue-100 text-blue-600"
                   : "bg-red-100 text-red-600"
+              }`}
+              title={`Schimbă în tema ${
+                theme === "blue" ? "roșie" : "albastră"
               }`}
             >
               <svg
@@ -108,12 +108,19 @@ export default function Header() {
               </svg>
             </button>
 
-            {isMenuOpen ? (
-              <XMarkIcon className="h-6 w-6" />
-            ) : (
-              <Bars3Icon className="h-6 w-6" />
-            )}
-          </button>
+            {/* Mobile menu button */}
+            <button
+              className="flex items-center"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              title={isMenuOpen ? "Închide meniul" : "Deschide meniul"}
+            >
+              {isMenuOpen ? (
+                <XMarkIcon className="h-6 w-6" />
+              ) : (
+                <Bars3Icon className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

@@ -19,8 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ro">
-      <body className={inter.className}>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body suppressHydrationWarning>
+        <div className={inter.className}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </div>
       </body>
     </html>
   );

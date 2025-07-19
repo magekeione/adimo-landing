@@ -17,25 +17,23 @@ export async function generateStaticParams() {
     slug: post.slug,
   }));
 }
-interface PageProps {
-  params: {
-    slug: string;
-  };
-}
 
-export default async function BlogPostPage({ params }: PageProps) {
-  const post = await getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>; // Promise în loc de Record
+}) {
+  const { slug } = await params; // Await params
+  const post = await getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  // Verifică dacă articolul poate fi accesat public
   if (post.status !== "published" || post.visibility !== "public") {
     notFound();
   }
 
-  // Obține postări similare folosind noul algoritm
   const relatedPosts = getRelatedPosts(post, 3);
 
   return <BlogPostClient post={post} relatedPosts={relatedPosts} />;

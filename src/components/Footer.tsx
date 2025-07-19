@@ -67,7 +67,12 @@ export default function Footer() {
                     aria-label={social.name}
                   >
                     <span className="sr-only">{social.name}</span>
-                    <Image alt="Social Icon" src={social.icon} />
+                    <Image
+                      alt="Social Icon"
+                      width={32}
+                      height={32}
+                      src={social.icon}
+                    />
                   </a>
                 ))}
               </div>

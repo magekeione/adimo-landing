@@ -55,7 +55,7 @@ export default function BlogPostClient({
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error("Failed to copy link");
+      console.error("Failed to copy link: " + err);
     }
   };
 

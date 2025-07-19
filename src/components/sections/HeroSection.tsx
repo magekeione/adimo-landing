@@ -6,7 +6,7 @@ import Container from "../ui/Container";
 import { useTheme } from "@/context/ThemeContext";
 
 export default function HeroSection() {
-  const { theme, colors } = useTheme();
+  const { colors } = useTheme();
 
   // Definim stilurile inline pentru gradient
   const gradientStyle = {

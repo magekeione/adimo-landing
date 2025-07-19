@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -51,7 +50,7 @@ export default function Screenshots() {
   ];
 
   // Funcție pentru a obține stilurile badge-urilor în funcție de tip
-  const getBadgeStyles = (device: string, pill: string) => {
+  const getBadgeStyles = (device: string) => {
     if (device === "mobile") {
       return {
         backgroundColor: `${colors.secondary[600]}20`, // 20% opacity
@@ -122,10 +121,7 @@ export default function Screenshots() {
             className="screenshots-swiper"
           >
             {screenshots.map((screenshot) => {
-              const badgeStyles = getBadgeStyles(
-                screenshot.device,
-                screenshot.pill
-              );
+              const badgeStyles = getBadgeStyles(screenshot.device);
 
               return (
                 <SwiperSlide key={screenshot.id}>

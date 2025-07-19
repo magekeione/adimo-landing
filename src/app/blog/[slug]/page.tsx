@@ -6,7 +6,6 @@ import {
 } from "@/lib/markdown";
 import { notFound } from "next/navigation";
 import BlogPostClient from "@/components/blog/BlogPostClient";
-import { Metadata } from "next";
 
 // Generează params pentru toate postările (pentru static generation)
 export async function generateStaticParams() {

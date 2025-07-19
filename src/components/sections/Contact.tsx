@@ -43,6 +43,7 @@ export default function Contact() {
       });
     } catch (error) {
       setSubmitStatus("error");
+      throw error;
     } finally {
       setIsSubmitting(false);
     }
@@ -85,7 +86,7 @@ export default function Contact() {
   };
 
   // Stiluri pentru form inputs cu focus dinamic
-  const getInputStyles = (fieldName: string) => ({
+  const getInputStyles = () => ({
     transition: "all 0.3s ease",
     borderColor: "#d1d5db", // gray-300
   });
@@ -173,7 +174,7 @@ export default function Contact() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       className="w-full px-4 py-3 border rounded-lg transition-all duration-300"
-                      style={getInputStyles("name")}
+                      style={getInputStyles()}
                       onFocus={(e) => {
                         Object.assign(e.target.style, getInputFocusStyles());
                       }}
@@ -196,7 +197,7 @@ export default function Contact() {
                         setFormData({ ...formData, email: e.target.value })
                       }
                       className="w-full px-4 py-3 border rounded-lg transition-all duration-300"
-                      style={getInputStyles("email")}
+                      style={getInputStyles()}
                       onFocus={(e) => {
                         Object.assign(e.target.style, getInputFocusStyles());
                       }}
@@ -219,7 +220,7 @@ export default function Contact() {
                       setFormData({ ...formData, type: e.target.value })
                     }
                     className="w-full px-4 py-3 border rounded-lg transition-all duration-300"
-                    style={getInputStyles("type")}
+                    style={getInputStyles()}
                     onFocus={(e) => {
                       Object.assign(e.target.style, getInputFocusStyles());
                     }}
@@ -247,7 +248,7 @@ export default function Contact() {
                       setFormData({ ...formData, subject: e.target.value })
                     }
                     className="w-full px-4 py-3 border rounded-lg transition-all duration-300"
-                    style={getInputStyles("subject")}
+                    style={getInputStyles()}
                     onFocus={(e) => {
                       Object.assign(e.target.style, getInputFocusStyles());
                     }}
@@ -271,7 +272,7 @@ export default function Contact() {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     className="w-full px-4 py-3 border rounded-lg resize-vertical transition-all duration-300"
-                    style={getInputStyles("message")}
+                    style={getInputStyles()}
                     onFocus={(e) => {
                       Object.assign(e.target.style, getInputFocusStyles());
                     }}

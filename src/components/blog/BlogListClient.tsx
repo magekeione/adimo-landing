@@ -21,7 +21,6 @@ interface BlogListClientProps {
 export default function BlogListClient({
   allPosts,
   featuredPosts,
-  regularPosts,
   categories,
   popularTags,
 }: BlogListClientProps) {
@@ -65,10 +64,6 @@ export default function BlogListClient({
 
       // Apoi criteriul selectat
       switch (sortBy) {
-        case "popularity":
-          const aViews = a.stats?.views || 0;
-          const bViews = b.stats?.views || 0;
-          return bViews - aViews;
         case "reading_time":
           const aTime = a.readingTime || 0;
           const bTime = b.readingTime || 0;
@@ -285,7 +280,11 @@ export default function BlogListClient({
                   </label>
                   <select
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value as any)}
+                    onChange={(e) =>
+                      setSortBy(
+                        e.target.value as "date" | "popularity" | "reading_time"
+                      )
+                    }
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300"
                   >
                     <option value="date">Data publicării</option>
@@ -524,7 +523,7 @@ export default function BlogListClient({
                   )}
                   {searchTerm && (
                     <span className="px-3 py-1 bg-gray-600 text-white rounded-full text-sm flex items-center">
-                      Căutare: "{searchTerm}"
+                      Căutare: &quot;{searchTerm}&quot;
                       <button
                         onClick={() => setSearchTerm("")}
                         className="ml-2 hover:bg-black hover:bg-opacity-20 rounded-full p-0.5"
@@ -640,24 +639,6 @@ export default function BlogListClient({
                           )}
 
                           <div className="flex items-center justify-between">
-                            {post.stats && (
-                              <div className="flex items-center space-x-2 text-xs text-gray-500">
-                                {post.stats.views && (
-                                  <span>
-                                    👁️{" "}
-                                    {post.stats.views > 999
-                                      ? `${Math.floor(
-                                          post.stats.views / 1000
-                                        )}k`
-                                      : post.stats.views}
-                                  </span>
-                                )}
-                                {post.stats.likes && (
-                                  <span>❤️ {post.stats.likes}</span>
-                                )}
-                              </div>
-                            )}
-
                             <Link
                               href={`/blog/${post.slug}`}
                               className="inline-flex items-center font-medium transition-colors duration-300 text-sm"

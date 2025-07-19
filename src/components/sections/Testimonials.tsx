@@ -144,7 +144,7 @@ export default function Testimonials() {
                   </div>
 
                   <p className="text-gray-700 italic leading-relaxed mb-4">
-                    "{testimonial.content}"
+                    &quot;testimonial.content&quot;
                   </p>
 
                   {/* Rating badge în colțul din dreapta jos */}
